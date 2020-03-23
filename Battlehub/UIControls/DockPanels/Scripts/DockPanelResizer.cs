@@ -29,13 +29,6 @@ public class DockPanelResizer : MonoBehaviour, IInitializePotentialDragHandler, 
         delta.x *= Mathf.Abs(m_dx);
         delta.y *= Mathf.Abs(m_dy);
 
-        //Affected.sizeDelta += delta;
-
-        float addedRight = delta.x * (0 - Affected.pivot.x);
-        float addedLeft = delta.x * (1 - Affected.pivot.x);
-        float horizontalAlign = m_dx < 0 ? addedLeft : addedRight;
-        float verticalAlign = m_dx < 0 ? addedLeft : addedRight;
-        Vector2 location = Affected.position;
 
         if (m_dx < 0)
         {

@@ -8,7 +8,7 @@ namespace Intratech.UI.Menu
     [MenuDefinition(2)]
     public static class Edit
     {
-        [MenuCommand("Edit/Preference")]
+        [MenuCommand("Edit/Preference", "download")]
         public static void Preference()
         {
 

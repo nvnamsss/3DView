@@ -20,6 +20,7 @@ namespace Assets.Intratech
             view.transform.SetParent(Parent.transform);
             view.name = root.Value;
             RectTransform rect = (RectTransform)view.transform;
+            rect.anchoredPosition = new Vector2();
             Vector2 size = rect.sizeDelta;
             size.x = 128;
             size.y = 32;
