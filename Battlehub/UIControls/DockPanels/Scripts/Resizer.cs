@@ -366,6 +366,7 @@ namespace Battlehub.UIControls.DockPanels
 
         void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
         {
+            Debug.Log("Hi mom");
             if (!m_region.CanResize)
             {
                 return;
