@@ -26,14 +26,37 @@ public class DockPanelResizer : MonoBehaviour, IInitializePotentialDragHandler, 
         Debug.Log("Hi mom Dragging");
 
         Vector2 delta = eventData.delta;
-        delta.x *= m_dx;
-        delta.y *= m_dy;
-        Affected.sizeDelta += delta;
+        delta.x *= Mathf.Abs(m_dx);
+        delta.y *= Mathf.Abs(m_dy);
 
+        //Affected.sizeDelta += delta;
+
+        float addedRight = delta.x * (0 - Affected.pivot.x);
+        float addedLeft = delta.x * (1 - Affected.pivot.x);
+        float horizontalAlign = m_dx < 0 ? addedLeft : addedRight;
+        float verticalAlign = m_dx < 0 ? addedLeft : addedRight;
         Vector2 location = Affected.position;
-        location += delta / 2;
 
-        Affected.position = location;
+        if (m_dx < 0)
+        {
+            Affected.AddLeft(delta.x);
+        }
+
+        if (m_dx > 0)
+        {
+            Affected.AddRight(delta.x);
+        }
+
+        if (m_dy > 0)
+        {
+            Affected.AddTop(delta.y);
+        }
+
+        if (m_dy < 0)
+        {
+            Affected.AddBottom(delta.y);
+        }
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -64,5 +87,28 @@ public class DockPanelResizer : MonoBehaviour, IInitializePotentialDragHandler, 
     void Update()
     {
 
+    }
+}
+
+ public static class RectTransformExtensions
+{
+    public static void AddLeft(this RectTransform rt, float left)
+    {
+        rt.offsetMin = new Vector2(rt.offsetMin.x + left, rt.offsetMin.y);
+    }
+
+    public static void AddRight(this RectTransform rt, float right)
+    {
+        rt.offsetMax = new Vector2(rt.offsetMax.x + right, rt.offsetMax.y);
+    }
+
+    public static void AddTop(this RectTransform rt, float top)
+    {
+        rt.offsetMax = new Vector2(rt.offsetMax.x, rt.offsetMax.y + top);
+    }
+
+    public static void AddBottom(this RectTransform rt, float bottom)
+    {
+        rt.offsetMin = new Vector2(rt.offsetMin.x, rt.offsetMin.y + bottom);
     }
 }
