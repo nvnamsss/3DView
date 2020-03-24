@@ -10,6 +10,11 @@ using UnityEngine.UI;
 
 namespace Assets.Intratech.UI.Toolbar
 {
+    public class ToolTriggerEvent : UnityEvent<GameObject>
+    {
+
+    }
+
     public class ToolManager : MonoBehaviour
     {
         public RectTransform bar;
@@ -48,12 +53,11 @@ namespace Assets.Intratech.UI.Toolbar
                         if (btn == null) Debug.Log("[ToolManager] cannot found button " + att.ButtonName + " for prefab " + att.PrefabPath);
 #endif
 
-                        Action action = (Action)Delegate.CreateDelegate(typeof(Action), method, false);
-                        btn.onClick.AddListener(() => action());
+                        Action<GameObject> action = (Action<GameObject>)Delegate.CreateDelegate(typeof(Action<GameObject>), method, false);
+                        btn.onClick.AddListener(() => action(clone));
                         clone.transform.SetParent(bar.transform);
                         RectTransform rect = (RectTransform)clone.transform;
                        
-
                         Vector2 position = rect.anchoredPosition;
                         position = new Vector2();
                         position.x += xtrans;
