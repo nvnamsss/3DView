@@ -18,7 +18,7 @@ namespace Assets.Intratech.UI.Toolbar
     public class ToolManager : MonoBehaviour
     {
         public RectTransform bar;
-
+        public string ToolbarName;
         private void Awake()
         {
             var asName = new AssemblyName();
@@ -37,6 +37,8 @@ namespace Assets.Intratech.UI.Toolbar
             foreach (Type type in toolDefinitions)
             {
                 MethodInfo[] methods = type.GetMethods();
+                ToolDefinitionAttribute toolAtt = (ToolDefinitionAttribute)type.GetCustomAttribute(typeof(ToolDefinitionAttribute));
+                if (toolAtt.Name != ToolbarName) continue;
 
                 foreach (MethodInfo method in methods)
                 {
@@ -57,21 +59,19 @@ namespace Assets.Intratech.UI.Toolbar
                         btn.onClick.AddListener(() => action(clone));
                         clone.transform.SetParent(bar.transform);
                         RectTransform rect = (RectTransform)clone.transform;
-                       
+                        
                         Vector2 position = rect.anchoredPosition;
                         position = new Vector2();
                         position.x += xtrans + att.Margin.Left;
                         position.y += ytrans + att.Margin.Top;
                         rect.anchoredPosition = position;
+                        Vector2 size = new Vector2(Mathf.Abs(rect.rect.width), Mathf.Abs(rect.rect.height));
 
-                        if (att.Size.Width == -1)
-                        {
-                            xtrans += Mathf.Abs(rect.rect.width) + att.Margin.Right;   
-                        }
-                        else
-                        {
-                            xtrans += att.Size.Width + att.Margin.Bottom;
-                        }
+                        size.x = att.Size.x != -1 ? att.Size.x : size.x;
+                        size.y = att.Size.y != -1 ? att.Size.y : size.y;
+
+                        rect.sizeDelta = size;
+                        xtrans += size.x + att.Margin.Right;
 
                         if (xtrans > Mathf.Abs(bar.rect.x))
                         {

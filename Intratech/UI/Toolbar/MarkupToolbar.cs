@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Assets.Intratech.UI.Toolbar
 {
-    [ToolDefinition]
+    [ToolDefinition(Name ="Main Toolbar")]
     public static class MarkupToolbar
     {
         [ToolCommand("Toolbar/IconOpen", "IconOpen", 8, 0, 16, 0)]
@@ -12,7 +12,7 @@ namespace Assets.Intratech.UI.Toolbar
             Debug.Log("Open");
         }
 
-        [ToolCommand("Toolbar/IconPrint", "IconPrint")]
+        [ToolCommand("Toolbar/IconPrint", "IconPrint", 32, 32)]
         public static void Print(GameObject sender) 
         {
             Debug.Log("Print");
@@ -42,6 +42,12 @@ namespace Assets.Intratech.UI.Toolbar
             Text text = sender.GetComponentInChildren<Text>();
 
             Debug.Log("Search with value: " + text.text);
+        }
+
+        [ToolCommand("Toolbar/VoiceChat", "VoiceChat", 16, 0, 0, 0)]
+        public static void VoiceChat(GameObject sender)
+        {
+
         }
     }
 }

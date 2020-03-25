@@ -8,5 +8,6 @@ namespace Assets.Intratech.UI.Toolbar
 {
     public class ToolDefinitionAttribute : Attribute
     {
+        public string Name;
     }
 }

@@ -11,9 +11,12 @@ namespace Assets.Intratech.UI.Toolbar
     {
         public string PrefabPath { get; }
         public string ButtonName { get; }
-        public Size Size { get; }
+        public Vector2 Size { get; }
         public Margin Margin { get; }
+        public ToolCommandAttribute()
+        {
 
+        }
         public ToolCommandAttribute(string prefabPath, string buttonName) : this(prefabPath, buttonName, -1, -1, 0, 0, 0, 0)
         {
 
@@ -32,23 +35,12 @@ namespace Assets.Intratech.UI.Toolbar
         {
             PrefabPath = prefabPath;
             ButtonName = buttonName;
-            Size = new Size(width, height);
+            Size = new Vector2(width, height);
             Margin = new Margin(left, top, right, bottom);
         }
 
     }
 
-    public struct Size
-    {
-        public float Width;
-        public float Height;
-
-        public Size(float width, float height)
-        {
-            Width = width;
-            Height = height;
-        }
-    }
     public struct Margin
     {
         public float Left;
