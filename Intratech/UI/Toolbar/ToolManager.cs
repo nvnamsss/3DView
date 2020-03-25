@@ -60,17 +60,17 @@ namespace Assets.Intratech.UI.Toolbar
                        
                         Vector2 position = rect.anchoredPosition;
                         position = new Vector2();
-                        position.x += xtrans;
-                        position.y += ytrans;
+                        position.x += xtrans + att.Margin.Left;
+                        position.y += ytrans + att.Margin.Top;
                         rect.anchoredPosition = position;
 
-                        if (att.Width == -1)
+                        if (att.Size.Width == -1)
                         {
-                            xtrans += Mathf.Abs(rect.rect.width);   
+                            xtrans += Mathf.Abs(rect.rect.width) + att.Margin.Right;   
                         }
                         else
                         {
-                            xtrans += att.Width;
+                            xtrans += att.Size.Width + att.Margin.Bottom;
                         }
 
                         if (xtrans > Mathf.Abs(bar.rect.x))

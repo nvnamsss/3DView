@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Intratech.UI.Toolbar
@@ -11,7 +6,7 @@ namespace Assets.Intratech.UI.Toolbar
     [ToolDefinition]
     public static class MarkupToolbar
     {
-        [ToolCommand("Toolbar/IconOpen", "IconOpen")]
+        [ToolCommand("Toolbar/IconOpen", "IconOpen", 8, 0, 16, 0)]
         public static void Open(GameObject sender)
         {
             Debug.Log("Open");
