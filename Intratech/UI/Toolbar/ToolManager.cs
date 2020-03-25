@@ -63,7 +63,7 @@ namespace Assets.Intratech.UI.Toolbar
                         Vector2 position = rect.anchoredPosition;
                         position = new Vector2();
                         position.x += xtrans + att.Margin.Left;
-                        position.y += ytrans + att.Margin.Top;
+                        position.y += ytrans - att.Margin.Top;
                         rect.anchoredPosition = position;
                         Vector2 size = new Vector2(Mathf.Abs(rect.rect.width), Mathf.Abs(rect.rect.height));
 

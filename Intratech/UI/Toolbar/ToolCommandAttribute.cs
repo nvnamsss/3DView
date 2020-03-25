@@ -23,7 +23,7 @@ namespace Assets.Intratech.UI.Toolbar
         }
 
 
-        public ToolCommandAttribute(string prefabPath, string buttonName, float left, float right, float top, float bottom) : this(prefabPath, buttonName, -1, -1, left, top, right, bottom)
+        public ToolCommandAttribute(string prefabPath, string buttonName, float left, float top, float right, float bottom) : this(prefabPath, buttonName, -1, -1, left, top, right, bottom)
         {
         }
 
@@ -31,7 +31,7 @@ namespace Assets.Intratech.UI.Toolbar
         {
 
         }
-        public ToolCommandAttribute(string prefabPath, string buttonName, float width, float height, float left, float right, float top, float bottom)
+        public ToolCommandAttribute(string prefabPath, string buttonName, float width, float height, float left, float top, float right, float bottom)
         {
             PrefabPath = prefabPath;
             ButtonName = buttonName;
