@@ -14,25 +14,24 @@ namespace Assets.Intratech.UI.Toolbar
         [ToolCommand("Toolbar/IconOpen", "IconOpen")]
         public static void Open(GameObject sender)
         {
-
+            Debug.Log("Open");
         }
 
         [ToolCommand("Toolbar/IconPrint", "IconPrint")]
         public static void Print(GameObject sender) 
         {
-
+            Debug.Log("Print");
         }
 
         [ToolCommand("Toolbar/IconSave", "IconSave")]
         public static void Save(GameObject sender)
         {
-            
+            Debug.Log("Save");
         }
 
         [ToolCommand("Toolbar/CommonButton", "CommonButton")]
         public static void ZoomIn(GameObject sender)
         {
-
             Debug.Log("Zoom in");
         }
 
