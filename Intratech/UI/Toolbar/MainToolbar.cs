@@ -44,10 +44,10 @@ namespace Assets.Intratech.UI.Toolbar
             Debug.Log("Search with value: " + text.text);
         }
 
-        [ToolCommand("Toolbar/VoiceChat", "VoiceChat", 16, 0, 0, 0)]
-        public static void VoiceChat(GameObject sender)
-        {
+        //[ToolCommand("Toolbar/VoiceChat", "VoiceChat", 16, 0, 0, 0)]
+        //public static void VoiceChat(GameObject sender)
+        //{
 
-        }
+        //}
     }
 }
